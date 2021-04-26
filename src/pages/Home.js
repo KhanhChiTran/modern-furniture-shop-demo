@@ -14,6 +14,28 @@ import "./home.scss";
 export default function Home() {
   const [index, setIndex] = useState(0);
   const { id, image, job, name, text } = Users[index];
+  const checkIndex = (num) => {
+    if (num > Users.length - 1) {
+      return 0;
+    }
+    if (num < 0) {
+      return Users.length - 1;
+    }
+    return num;
+  };
+  const toPrev = () => {
+    setIndex((index) => {
+      let newIndex = index - 1;
+      return checkIndex(newIndex);
+    });
+  };
+  const toNext = () => {
+    setIndex((index) => {
+      let newIndex = index + 1;
+      return checkIndex(newIndex);
+    });
+  };
+
   return (
     <Layout>
       <div className="home-wrap">
@@ -32,13 +54,13 @@ export default function Home() {
           </article>
         </div>
         <div className="reviews">
-          <button className="arrow-left">
+          <button onClick={toPrev} className="arrow-left">
             {" "}
-            <CgArrowLongLeft />
+            <CgArrowLongLeft className="arrow-left-icon" />
           </button>
-          <button className="arrow-right">
+          <button onClick={toNext} className="arrow-right">
             {" "}
-            <CgArrowLongRight />
+            <CgArrowLongRight className="arrow-right-icon" />
           </button>
           <img className="user-img" src={image} alt="" />
           <p>{text}</p>

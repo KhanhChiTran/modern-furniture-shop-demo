@@ -6,7 +6,7 @@ const reviews = [
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
     text:
-      "I'm baby meggings twee health goth +1. Bicycle rights tumeric chartreuse before they sold out chambray pop-up. Shaman humblebrag pickled coloring book salvia hoodie, cold-pressed four dollar toast everyday carry",
+      "Nudge inter darts sun orca ingham jogging your jar cockie hand jana yoyo ana pumba inan your jarBanh mi owner shin jar knee two cower gin and your jar",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const reviews = [
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883409/person-2_np9x5l.jpg",
     text:
-      "Helvetica artisan kinfolk thundercats lumbersexual blue bottle. Disrupt glossier gastropub deep v vice franzen hell of brooklyn twee enamel pin fashion axe.photo booth jean shorts artisan narwhal.",
+      "Good or bad John inan your jar Nana summer air nah Jen and law Markov tar arrow on tour Summer air coffee ship eagle John and washer Daniel Summer air banh mi owner ship dunny charger bond and summer air  kudos summer air",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const reviews = [
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883423/person-4_t9nxjt.jpg",
     text:
-      "Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ",
+      "And there was silence in our world could of known… if I’d have known And there was silence in our world could of known… if I’d have known Cheating book target the ganges gavel go go gooooo Open Gang numb style ",
   },
 ];
 
