@@ -1,0 +1,44 @@
+.home-wrap {
+}
+
+.home-images {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 35vh 35vh;
+  grid-gap: 25px;
+  grid-template-areas:
+    "table table table table pot pot"
+    "table table table table pot2 pot2";
+
+  > * {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .home-intro {
+    padding: 10px;
+    grid-area: intro;
+  }
+
+  .table {
+    grid-area: table;
+  }
+  .pot {
+    grid-area: pot;
+  }
+  .pot2 {
+    grid-area: pot2;
+  }
+}
+
+@media (max-width: 550px) {
+  .home-images {
+    display: block;
+
+    > * {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

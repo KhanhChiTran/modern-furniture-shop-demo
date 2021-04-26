@@ -1,0 +1,26 @@
+a {
+  text-decoration: none;
+  color: #cecece;
+}
+a:hover {
+  color: orange;
+}
+p {
+  font-family: "Oswald", sans-serif;
+}
+ul {
+  padding: 0;
+}
+.global-wrap {
+  max-width: 1024px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+  padding: 0 20px;
+  main {
+    flex: 1;
+  }
+}
