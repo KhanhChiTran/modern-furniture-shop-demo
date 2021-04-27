@@ -1,11 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { IoCartOutline } from "react-icons/io5";
+import { AiOutlineHeart } from "react-icons/ai";
 import "./header.scss";
 export default function Header() {
   return (
     <div className="header-wrap">
       <div className="logo">
         <h1>MINI</h1>
+      </div>
+      <div className="cart">
+        <IoCartOutline className="icon" />
+        <AiOutlineHeart className="icon" />
       </div>
       <div className="nav-bar">
         <ul className="nav-list">
