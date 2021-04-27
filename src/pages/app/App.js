@@ -1,18 +1,22 @@
 // import { Router } from "react-router";
 import "./App.scss";
-import { Link, Route, Switch } from "react-router-dom";
-import Layout from "./components/Layout";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import Store from "./pages/Store";
-import Contact from "./pages/Contact";
-import Blog from "./pages/Blog";
+import { Route, Switch } from "react-router-dom";
+
+import Login from "../login/Login";
+import Home from "../home/Home";
+import Store from "../shop/Store";
+import Contact from "../contact/Contact";
+import Blog from "../blog/Blog";
+import ProductDetail from "../product/ProductDetail";
+
 function App() {
   return (
     <Switch>
       <Route exact path="/">
         <Home />
       </Route>
+      <Route path="/productdetail/:item" component={ProductDetail} />
+
       <Route path="/store">
         <Store />
       </Route>

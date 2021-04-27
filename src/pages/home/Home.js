@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { CgArrowLongLeft, CgArrowLongRight } from "react-icons/cg";
 
-import Layout from "../components/Layout";
+import Layout from "../../components/layout/Layout";
 
-import BambooPot from "../assets/images/bamboo_pot.jpeg";
-import Basket from "../assets/images/basket1.jpeg";
-import Table1 from "../assets/images/table1.jpeg";
+// import BambooPot from "../../assets/images/ba";
+import BambooPot from "../../assets/images/bamboo_pot.jpeg";
+import Basket from "../../assets/images/basket1.jpeg";
+import Table1 from "../../assets/images/table1.jpeg";
 
-import Users from "../assets/data/data";
+import Users from "../../assets/data/data";
 
 import "./home.scss";
 
@@ -40,7 +41,6 @@ export default function Home() {
     <Layout>
       <div className="home-wrap">
         <div className="home-images">
-          {/* <img className="pot" src={Pot1} alt="Pot" /> */}
           <img className="table" src={Table1} alt="Table" />
           <img className="pot" src={BambooPot} alt="Pot" />
           <img className="pot2" src={Basket} alt="Vase" />

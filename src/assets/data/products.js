@@ -14,6 +14,8 @@ const Products = [
       "https://www.ikea.com/de/de/images/products/foerenlig-vase-rosa__0888464_pe782066_s5.jpg?f=xs",
     star: 4,
     price: 79,
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Vestibulum ultricies aliquam convallis.",
   },
   {
     id: 3,
