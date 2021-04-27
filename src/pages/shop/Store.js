@@ -20,11 +20,12 @@ export default function Store() {
         </Link>
       </div>
       <div className="product-list">
-        {Product.map((item) => {
+        {Product.map((item, index) => {
           const { id, name, img, star, price } = item;
 
           return (
             <Link
+              key={index}
               to={{
                 pathname: `/productdetail/${slugify(name, {
                   lower: true,

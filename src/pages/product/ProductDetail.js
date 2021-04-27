@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/layout/Layout";
 
 import Rating from "../../components/rating/Rating";
@@ -9,6 +9,8 @@ import "./product.scss";
 
 export default function ProductDetail({ location }) {
   const { img, name, star, price, description } = location.state;
+  const [productList, setProductList] = useState([]);
+
   return (
     <Layout>
       <div className="item-info">
@@ -21,7 +23,11 @@ export default function ProductDetail({ location }) {
           <Rating star={star} />
           <p>{description}</p>
           <div className="item-cart">
-            <button className="item-btn cart-btn" type="submit">
+            <button
+              // onClick={handleAddToCart}
+              className="item-btn cart-btn"
+              type="submit"
+            >
               ADD TO CART
             </button>
             <button className="item-btn wishlist-btn" type="submit">

@@ -5,9 +5,12 @@ import { Route, Switch } from "react-router-dom";
 import Login from "../login/Login";
 import Home from "../home/Home";
 import Store from "../shop/Store";
+
 import Contact from "../contact/Contact";
 import Blog from "../blog/Blog";
 import ProductDetail from "../product/ProductDetail";
+import Cart from "../cart/Cart";
+import WishList from "../wishlist/WishList";
 
 function App() {
   return (
@@ -19,6 +22,12 @@ function App() {
 
       <Route path="/store">
         <Store />
+      </Route>
+      <Route path="/cart">
+        <Cart />
+      </Route>
+      <Route path="/wishlist">
+        <WishList />
       </Route>
       <Route path="/blog">
         <Blog />

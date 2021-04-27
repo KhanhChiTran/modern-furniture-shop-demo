@@ -6,7 +6,7 @@ export default function Rating({ star = 5 }) {
   return (
     <div>
       {ratingArray.map((rate, index) => (
-        <span index={index}> {<AiFillStar className="star" />} </span>
+        <span key={index}> {<AiFillStar className="star" />} </span>
       ))}
     </div>
   );
