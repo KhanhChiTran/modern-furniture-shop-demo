@@ -1,28 +1,47 @@
 import React, { createContext, useState } from "react";
-
+import Products from "../assets/data/products";
 export const CartContext = createContext();
 
 export default function CartContextLayout({ children }) {
-  //   const [cartItems, setCartItems] = useState([]);
-
-  //   function handleAddToCart(item) {
-  //     setCartItems((prevCartItems) => {
-  //       const findItem = prevCartItems.find(
-  //         (prevItem) => prevItem.id === item.id
-  //       );
-  //       if (findItem) {
-  //         return { ...prevCartItems, qty: prevCartItems.qty + 1 };
-  //       } else {
-  //       }
-  //     });
-  //   }
   const [amount, setAmount] = useState(0);
   const [wishlist, setWishlist] = useState(0);
   const [color, setColor] = useState("");
+  const [cartItems, setCartItems] = useState([]);
+  const [price, setPrice] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
-  function handleAddToCart() {
+  function handleAddToCart(id, price) {
+    let inCartProducts = Products.filter((item) => item.id === id);
+    let exitedItem = cartItems.find((item) => item.id === id);
+    console.log(exitedItem);
     setAmount(amount + 1);
+    /*
+ cartItem = {
+     id : 10,
+     title : 'glass',
+     
+ }
+ */
+    setCartItems((prevState) => {
+      if (!exitedItem) {
+        return prevState.concat(inCartProducts);
+      } else {
+        const newCartItems = prevState.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+
+        return newCartItems;
+      }
+    });
+    setPrice((prevPrice) => {
+      return prevPrice + price;
+    });
+
+    setQuantity((prevQuantity) => {
+      return prevQuantity + 1;
+    });
   }
+
   function handleAddToWishlist() {
     setWishlist(wishlist + 1);
     setColor("red");
@@ -35,6 +54,8 @@ export default function CartContextLayout({ children }) {
         wishlist,
         handleAddToWishlist,
         color,
+        cartItems,
+        price,
       }}
     >
       {children}
