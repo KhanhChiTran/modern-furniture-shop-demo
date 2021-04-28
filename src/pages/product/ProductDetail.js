@@ -7,12 +7,16 @@ import { Link } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 
 import "./product.scss";
+import WishList from "../wishlist/WishList";
 
 export default function ProductDetail({ location }) {
   const { img, name, star, price, description, id } = location.state;
-
-  const [productList, setProductList] = useState([]);
-  const { handleAddToCart, handleAddToWishlist } = useContext(CartContext);
+  const {
+    handleAddToCart,
+    handleAddToWishlist,
+    cartItems,
+    wishlist,
+  } = useContext(CartContext);
   // console.log(handleAddToCart);
   return (
     <Layout>
@@ -27,21 +31,33 @@ export default function ProductDetail({ location }) {
           <p>{description}</p>
           <div className="item-cart">
             <button
-              onClick={() => handleAddToCart(id, price)}
+              onClick={() =>
+                handleAddToCart({ img, name, star, price, description, id })
+              }
               className="item-btn cart-btn"
               type="submit"
             >
-              ADD TO CART
+              {cartItems.find((item) => item.id === id) ? (
+                <span> &#10004; ADDED</span>
+              ) : (
+                <span>ADD TO CART</span>
+              )}
             </button>
             <button
-              onClick={handleAddToWishlist}
+              onClick={() =>
+                handleAddToWishlist({ img, name, star, price, description, id })
+              }
               className="item-btn wishlist-btn"
               type="submit"
             >
               ADD TO WISHLIST{" "}
               <span className="icon">
                 {" "}
-                <AiOutlineHeart />
+                {wishlist.find((item) => item.id === id) ? (
+                  <AiOutlineHeart style={{ fill: "red" }} />
+                ) : (
+                  <AiOutlineHeart />
+                )}
               </span>{" "}
             </button>
           </div>

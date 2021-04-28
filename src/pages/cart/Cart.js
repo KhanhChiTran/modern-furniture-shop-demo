@@ -6,8 +6,7 @@ import Layout from "../../components/layout/Layout";
 import "./cart.scss";
 import { CgAddR } from "react-icons/cg";
 export default function Cart() {
-  const { cartItems, amount, price } = useContext(CartContext);
-
+  const { cartItems, amount, totalPrice } = useContext(CartContext);
   return (
     <Layout>
       {amount === 0 ? (
@@ -21,13 +20,14 @@ export default function Cart() {
         <div className="cart-wrap">
           <div className="cart-item-wrap">
             {cartItems.map((item) => (
-              <div className="cart-item">
+              <div key={item.id} className="cart-item">
                 <img className="cart-item-img" src={item.img} alt="image" />
                 <div className="cart-item-name">
                   <h4>{item.name}</h4>
+                  <div className="quantity">{item.quantity}</div>
                 </div>
                 <div className="cart-item-price">
-                  <h4>{item.price} €</h4>
+                  <h4>x {item.price} €</h4>
                 </div>
               </div>
             ))}
@@ -40,7 +40,7 @@ export default function Cart() {
             <div className="total-text">
               <h1>Total</h1>
               <div className="total-price">
-                <h1>€ {price}</h1>
+                <h1>€ {totalPrice}</h1>
               </div>
             </div>
             <p>*This total doesn’t include the delivery or pickup costs</p>

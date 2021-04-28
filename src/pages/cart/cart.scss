@@ -22,6 +22,7 @@
 }
 .cart-item-wrap {
   width: 50%;
+  margin-bottom: 5rem;
 
   .cart-item {
     display: flex;
@@ -37,6 +38,15 @@
     }
     .cart-item-price {
       width: 100px;
+      color: black;
+    }
+    .quantity {
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      border-radius: 32px;
+
+      width: 50px;
+      text-align: center;
     }
   }
   .cart-item:last-child {
