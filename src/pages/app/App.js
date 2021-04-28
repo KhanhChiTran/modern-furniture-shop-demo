@@ -12,33 +12,37 @@ import ProductDetail from "../product/ProductDetail";
 import Cart from "../cart/Cart";
 import WishList from "../wishlist/WishList";
 
+import CartContextLayout from "../../contexts/CartContext";
+
 function App() {
   return (
-    <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route path="/productdetail/:item" component={ProductDetail} />
+    <CartContextLayout>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/productdetail/:item" component={ProductDetail} />
 
-      <Route path="/store">
-        <Store />
-      </Route>
-      <Route path="/cart">
-        <Cart />
-      </Route>
-      <Route path="/wishlist">
-        <WishList />
-      </Route>
-      <Route path="/blog">
-        <Blog />
-      </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
-      <Route path="/contact">
-        <Contact />
-      </Route>
-    </Switch>
+        <Route path="/store">
+          <Store />
+        </Route>
+        <Route path="/cart">
+          <Cart />
+        </Route>
+        <Route path="/wishlist">
+          <WishList />
+        </Route>
+        <Route path="/blog">
+          <Blog />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/contact">
+          <Contact />
+        </Route>
+      </Switch>
+    </CartContextLayout>
   );
 }
 

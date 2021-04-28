@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Layout from "../../components/layout/Layout";
+import { CartContext } from "../../contexts/CartContext";
 
 import Rating from "../../components/rating/Rating";
 import { Link } from "react-router-dom";
@@ -8,9 +9,9 @@ import { AiOutlineHeart } from "react-icons/ai";
 import "./product.scss";
 
 export default function ProductDetail({ location }) {
-  const { img, name, star, price, description } = location.state;
+  const { img, name, star, price, description, id } = location.state;
   const [productList, setProductList] = useState([]);
-
+  const { handleAddToCart, handleAddToWishlist } = useContext(CartContext);
   return (
     <Layout>
       <div className="item-info">
@@ -24,13 +25,17 @@ export default function ProductDetail({ location }) {
           <p>{description}</p>
           <div className="item-cart">
             <button
-              // onClick={handleAddToCart}
+              onClick={handleAddToCart}
               className="item-btn cart-btn"
               type="submit"
             >
               ADD TO CART
             </button>
-            <button className="item-btn wishlist-btn" type="submit">
+            <button
+              onClick={handleAddToWishlist}
+              className="item-btn wishlist-btn"
+              type="submit"
+            >
               ADD TO WISHLIST{" "}
               <span className="icon">
                 {" "}

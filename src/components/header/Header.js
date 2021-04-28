@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 import { Link, NavLink } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
-import { AiOutlineHeart } from "react-icons/ai";
+
+import { FiHeart } from "react-icons/fi";
 import "./header.scss";
 export default function Header() {
+  const { amount, wishlist, color } = useContext(CartContext);
+
   return (
     <div className="header-wrap">
       <div className="logo">
@@ -11,11 +15,13 @@ export default function Header() {
       </div>
       <div className="cart">
         <Link to="/cart">
-          <IoCartOutline className="icon" />
+          <IoCartOutline className="icon cart-icon" />
+          <span className="cart-amount">{amount}</span>
         </Link>
         <Link to="/wishlist">
           {" "}
-          <AiOutlineHeart className="icon" />
+          <FiHeart className="icon heart-icon" style={{ color }} />
+          <span className="cart-wishlist">{wishlist}</span>
         </Link>
       </div>
       <div className="nav-bar">
