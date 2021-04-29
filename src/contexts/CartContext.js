@@ -34,6 +34,46 @@ export default function CartContextLayout({ children }) {
     });
   };
 
+  const handleMinusFromCart = ({
+    img,
+    name,
+    star,
+    price,
+    description,
+    id,
+    quantity,
+  }) => {
+    let newCartItems;
+    if (quantity === 1) {
+      newCartItems = cartItems.filter((item) => item.id !== id);
+    } else {
+      newCartItems = cartItems.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+      );
+    }
+    setCartItems(newCartItems);
+    setAmount(amount - 1);
+    setTotalPrice((prevPrice) => {
+      return prevPrice - price;
+    });
+  };
+
+  const handleRemoveFromCart = ({
+    img,
+    name,
+    star,
+    price,
+    description,
+    id,
+    quantity,
+  }) => {
+    let newCartItems = cartItems.filter((item) => item.id !== id);
+    setCartItems(newCartItems);
+    setAmount(amount - quantity);
+    setTotalPrice((prevPrice) => {
+      return prevPrice - price * quantity;
+    });
+  };
   function handleAddToWishlist({ img, name, star, price, description, id }) {
     let newWishLish;
     let exitedItem = wishlist.find((item) => item.id === id);
@@ -51,6 +91,8 @@ export default function CartContextLayout({ children }) {
       value={{
         amount,
         handleAddToCart,
+        handleMinusFromCart,
+        handleRemoveFromCart,
         likedItem,
         wishlist,
         handleAddToWishlist,

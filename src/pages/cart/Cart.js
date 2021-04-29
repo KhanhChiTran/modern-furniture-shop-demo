@@ -1,12 +1,22 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
+
 import Layout from "../../components/layout/Layout";
 
 import "./cart.scss";
-import { CgAddR } from "react-icons/cg";
+import { MdDelete } from "react-icons/md";
+import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
+
 export default function Cart() {
-  const { cartItems, amount, totalPrice } = useContext(CartContext);
+  const {
+    cartItems,
+    amount,
+    totalPrice,
+    handleAddToCart,
+    handleMinusFromCart,
+    handleRemoveFromCart,
+  } = useContext(CartContext);
 
   return (
     <Layout>
@@ -20,18 +30,74 @@ export default function Cart() {
       ) : (
         <div className="cart-wrap">
           <div className="cart-item-wrap">
-            {cartItems.map((item) => (
-              <div key={item.id} className="cart-item">
-                <img className="cart-item-img" src={item.img} alt="image" />
-                <div className="cart-item-name">
-                  <h4>{item.name}</h4>
-                  <div className="quantity">{item.quantity}</div>
+            {cartItems.map((item) => {
+              const {
+                img,
+                name,
+                star,
+                price,
+                description,
+                id,
+                quantity,
+              } = item;
+              return (
+                <div key={item.id} className="cart-item">
+                  <img className="cart-item-img" src={img} alt="image" />
+                  <div className="cart-item-name">
+                    <h4>{name}</h4>
+                    <div className="quantity">
+                      <AiFillMinusCircle
+                        onClick={() =>
+                          handleMinusFromCart({
+                            img,
+                            name,
+                            star,
+                            price,
+                            description,
+                            id,
+                            quantity,
+                          })
+                        }
+                        className="quantity-cta"
+                      />
+                      {quantity}
+                      <AiFillPlusCircle
+                        onClick={() =>
+                          handleAddToCart({
+                            img,
+                            name,
+                            star,
+                            price,
+                            description,
+                            id,
+                            quantity,
+                          })
+                        }
+                        className="quantity-cta"
+                      />
+                    </div>
+                  </div>
+                  <div className="cart-item-price">
+                    <h4>x {price} €</h4>
+                    <span className="remove">
+                      <MdDelete
+                        onClick={() =>
+                          handleRemoveFromCart({
+                            img,
+                            name,
+                            star,
+                            price,
+                            description,
+                            id,
+                            quantity,
+                          })
+                        }
+                      />
+                    </span>
+                  </div>
                 </div>
-                <div className="cart-item-price">
-                  <h4>x {item.price} €</h4>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <div className="total">
             <div className="total-amount">

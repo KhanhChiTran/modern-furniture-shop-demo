@@ -41,12 +41,26 @@
       color: black;
     }
     .quantity {
+      position: relative;
       border: 1px solid #ccc;
-      padding: 5px 10px;
-      border-radius: 32px;
+      padding: 10px 15px;
 
-      width: 50px;
+      border-radius: 32px;
+      width: 70px;
       text-align: center;
+
+      display: flex;
+      justify-content: space-between;
+    }
+    .quantity-cta {
+      cursor: pointer;
+      color: black;
+      font-size: larger;
+    }
+    .remove {
+      cursor: pointer;
+      font-size: larger;
+      // border: 1px solid #ccc;
     }
   }
   .cart-item:last-child {
