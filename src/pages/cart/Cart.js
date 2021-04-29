@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
+import { productTypes } from "../../reducer/productTypes";
 
 import Layout from "../../components/layout/Layout";
 
@@ -9,18 +10,27 @@ import { MdDelete } from "react-icons/md";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 
 export default function Cart() {
-  const {
-    cartItems,
-    amount,
-    totalPrice,
-    handleAddToCart,
-    handleMinusFromCart,
-    handleRemoveFromCart,
-  } = useContext(CartContext);
-
+  const [
+    {
+      cartItems,
+      wishListItems,
+      totalAdded,
+      totalWished,
+      // amount,
+      // totalPrice,
+      // handleAddToCart,
+      // handleMinusFromCart,
+      // handleRemoveFromCart,
+    },
+    dispatch,
+  ] = useContext(CartContext);
+  const totalPrice = cartItems.reduce(
+    (acc, cur) => acc + cur.price * cur.quantity,
+    0
+  );
   return (
     <Layout>
-      {amount === 0 ? (
+      {totalAdded === 0 ? (
         <div className="cart-empty">
           <h1> Your bag is empty!</h1>
           <Link to="/store">
@@ -48,14 +58,17 @@ export default function Cart() {
                     <div className="quantity">
                       <AiFillMinusCircle
                         onClick={() =>
-                          handleMinusFromCart({
-                            img,
-                            name,
-                            star,
-                            price,
-                            description,
-                            id,
-                            quantity,
+                          dispatch({
+                            type: productTypes.MINUS_FROM_CART,
+                            payload: {
+                              img,
+                              name,
+                              star,
+                              price,
+                              description,
+                              id,
+                              quantity,
+                            },
                           })
                         }
                         className="quantity-cta"
@@ -63,14 +76,17 @@ export default function Cart() {
                       {quantity}
                       <AiFillPlusCircle
                         onClick={() =>
-                          handleAddToCart({
-                            img,
-                            name,
-                            star,
-                            price,
-                            description,
-                            id,
-                            quantity,
+                          dispatch({
+                            type: productTypes.ADD_TO_CART,
+                            payload: {
+                              img,
+                              name,
+                              star,
+                              price,
+                              description,
+                              id,
+                              quantity,
+                            },
                           })
                         }
                         className="quantity-cta"
@@ -82,14 +98,17 @@ export default function Cart() {
                     <span className="remove">
                       <MdDelete
                         onClick={() =>
-                          handleRemoveFromCart({
-                            img,
-                            name,
-                            star,
-                            price,
-                            description,
-                            id,
-                            quantity,
+                          dispatch({
+                            type: productTypes.REMOVE_FROM_CART,
+                            payload: {
+                              img,
+                              name,
+                              star,
+                              price,
+                              description,
+                              id,
+                              quantity,
+                            },
                           })
                         }
                       />
@@ -102,7 +121,7 @@ export default function Cart() {
           <div className="total">
             <div className="total-amount">
               <h3>Quantity</h3>
-              <h1>{amount}</h1>
+              <h1>{totalAdded}</h1>
             </div>
             <div className="total-text">
               <h1>Total</h1>

@@ -6,7 +6,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { FiHeart } from "react-icons/fi";
 import "./header.scss";
 export default function Header() {
-  const { amount, likedItem } = useContext(CartContext);
+  const [{ totalAdded, totalWished }] = useContext(CartContext);
 
   return (
     <div className="header-wrap">
@@ -17,15 +17,15 @@ export default function Header() {
       <div className="cart">
         <Link to="/cart">
           <IoCartOutline className="icon cart-icon" />
-          <span className="cart-amount">{amount}</span>
+          <span className="cart-amount">{totalAdded}</span>
         </Link>
         <Link to="/wishlist">
           {" "}
           <FiHeart
             className="icon heart-icon"
-            style={{ color: likedItem > 0 ? "red" : "" }}
+            style={{ color: totalWished > 0 ? "red" : "" }}
           />
-          <span className="cart-wishlist">{likedItem}</span>
+          <span className="cart-wishlist">{totalWished}</span>
         </Link>
       </div>
 
