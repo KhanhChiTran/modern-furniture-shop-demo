@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CgArrowLongLeft, CgArrowLongRight } from "react-icons/cg";
 
 import Layout from "../../components/layout/Layout";
@@ -14,6 +14,7 @@ import "./home.scss";
 
 export default function Home() {
   const [index, setIndex] = useState(0);
+  const [slide, setSlide] = useState("");
   const { id, image, job, name, text } = Users[index];
   const checkIndex = (num) => {
     if (num > Users.length - 1) {
@@ -36,6 +37,12 @@ export default function Home() {
       return checkIndex(newIndex);
     });
   };
+  useEffect(() => {
+    setSlide("slide");
+    setTimeout(() => {
+      setSlide("");
+    }, 700);
+  }, [index]);
 
   return (
     <Layout>
@@ -62,10 +69,10 @@ export default function Home() {
             {" "}
             <CgArrowLongRight className="arrow-right-icon" />
           </button>
-          <img className="user-img" src={image} alt="" />
-          <p>{text}</p>
-          <h2>{name.toUpperCase()}</h2>
-          <h4>{job}</h4>
+          <img className={`${slide} user-img`} src={image} alt="" />
+          <p className={slide}>{text}</p>
+          <h2 className={slide}>{name.toUpperCase()}</h2>
+          <h4 className={slide}>{job}</h4>
         </div>
       </div>
     </Layout>

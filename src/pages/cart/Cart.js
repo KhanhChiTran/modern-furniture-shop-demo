@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
 import Layout from "../../components/layout/Layout";
@@ -7,10 +7,11 @@ import "./cart.scss";
 import { CgAddR } from "react-icons/cg";
 export default function Cart() {
   const { cartItems, amount, totalPrice } = useContext(CartContext);
+
   return (
     <Layout>
       {amount === 0 ? (
-        <div className="cart cart-empty">
+        <div className="cart-empty">
           <h1> Your bag is empty!</h1>
           <Link to="/store">
             <button>Back To Shop</button>

@@ -8,7 +8,7 @@ export default function CartContextLayout({ children }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartItems, setCartItems] = useState([]);
 
-  function handleAddToCart({ img, name, star, price, description, id }) {
+  const handleAddToCart = ({ img, name, star, price, description, id }) => {
     let exitedItem = cartItems.find((item) => item.id === id);
     setAmount(amount + 1);
     let newCartItems;
@@ -32,7 +32,7 @@ export default function CartContextLayout({ children }) {
     setTotalPrice((prevPrice) => {
       return prevPrice + price;
     });
-  }
+  };
 
   function handleAddToWishlist({ img, name, star, price, description, id }) {
     let newWishLish;
@@ -54,7 +54,6 @@ export default function CartContextLayout({ children }) {
         likedItem,
         wishlist,
         handleAddToWishlist,
-
         cartItems,
         totalPrice,
       }}

@@ -42,6 +42,8 @@
   padding: 60px 150px;
   text-align: center;
   position: relative;
+  // animation: slide 1s;
+
   .user-img {
     width: 150px;
     height: 150px;
@@ -94,5 +96,21 @@
   }
   .reviews {
     padding: 20px;
+  }
+}
+
+//TODO : slide
+.slide {
+  animation: slide 0.7s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

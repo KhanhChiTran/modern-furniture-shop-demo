@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import { CartContext } from "../../contexts/CartContext";
 
@@ -16,8 +16,10 @@ export default function ProductDetail({ location }) {
     handleAddToWishlist,
     cartItems,
     wishlist,
+
   } = useContext(CartContext);
   // console.log(handleAddToCart);
+
   return (
     <Layout>
       <div className="item-info">

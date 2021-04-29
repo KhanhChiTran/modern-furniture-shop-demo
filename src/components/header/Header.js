@@ -13,6 +13,7 @@ export default function Header() {
       <div className="logo">
         <h1>MINI</h1>
       </div>
+
       <div className="cart">
         <Link to="/cart">
           <IoCartOutline className="icon cart-icon" />
@@ -27,6 +28,7 @@ export default function Header() {
           <span className="cart-wishlist">{likedItem}</span>
         </Link>
       </div>
+
       <div className="nav-bar">
         <ul className="nav-list">
           <NavLink exact className="link-item" to="/" activeClassName="active">
