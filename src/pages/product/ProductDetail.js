@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useReducer } from "react";
 import Layout from "../../components/layout/Layout";
 import { CartContext } from "../../contexts/CartContext";
 
@@ -9,16 +9,21 @@ import { AiOutlineHeart } from "react-icons/ai";
 import "./product.scss";
 import WishList from "../wishlist/WishList";
 
+import { productTypes } from "../../reducer/productTypes";
+import { initialState, productReducer } from "../../reducer/productReducer";
+
 export default function ProductDetail({ location }) {
   const { img, name, star, price, description, id } = location.state;
-  const {
-    handleAddToCart,
-    handleAddToWishlist,
-    cartItems,
-    wishlist,
+  // const {
+  //   handleAddToCart,
+  //   handleAddToWishlist,
+  //   cartItems,
+  //   wishlist,
 
-  } = useContext(CartContext);
+  // } = useContext(CartContext);
   // console.log(handleAddToCart);
+  const [{ totalItems, cartItems }, dispatch] = useContext(CartContext);
+  console.log(cartItems);
 
   return (
     <Layout>
@@ -33,33 +38,40 @@ export default function ProductDetail({ location }) {
           <p>{description}</p>
           <div className="item-cart">
             <button
+              // onClick={() =>
+              //   handleAddToCart({ img, name, star, price, description, id })
+              // }
               onClick={() =>
-                handleAddToCart({ img, name, star, price, description, id })
+                dispatch({
+                  type: productTypes.ADD_TO_CART,
+                  payload: { img, name, star, price, description, id },
+                })
               }
               className="item-btn cart-btn"
               type="submit"
             >
-              {cartItems.find((item) => item.id === id) ? (
+              {/* {cartItems.find((item) => item.id === id) ? (
                 <span> &#10004; ADDED</span>
               ) : (
                 <span>ADD TO CART</span>
-              )}
+              )} */}
+              <span>Add To Cart</span>
             </button>
             <button
-              onClick={() =>
-                handleAddToWishlist({ img, name, star, price, description, id })
-              }
+              // onClick={() =>
+              //   handleAddToWishlist({ img, name, star, price, description, id })
+              // }
               className="item-btn wishlist-btn"
               type="submit"
             >
               ADD TO WISHLIST{" "}
               <span className="icon">
                 {" "}
-                {wishlist.find((item) => item.id === id) ? (
+                {/* {wishlist.find((item) => item.id === id) ? (
                   <AiOutlineHeart style={{ fill: "red" }} />
                 ) : (
                   <AiOutlineHeart />
-                )}
+                )} */}
               </span>{" "}
             </button>
           </div>
