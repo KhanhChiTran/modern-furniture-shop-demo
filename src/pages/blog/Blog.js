@@ -4,7 +4,8 @@ import Layout from "../../components/layout/Layout";
 export default function Blog() {
   return (
     <Layout>
-      <h1>Blog</h1>
+      {" "}
+      <h1>Blog</h1>{" "}
     </Layout>
   );
 }

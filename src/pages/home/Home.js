@@ -11,7 +11,15 @@ import Table1 from "../../assets/images/table1.jpeg";
 import Users from "../../assets/data/data";
 
 import "./home.scss";
+import Slider from "react-slick";
 
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 export default function Home() {
   const [index, setIndex] = useState(0);
   const [slide, setSlide] = useState("");
@@ -73,6 +81,19 @@ export default function Home() {
           <p className={slide}>{text}</p>
           <h2 className={slide}>{name.toUpperCase()}</h2>
           <h4 className={slide}>{job}</h4>
+          <Slider {...settings}>
+            {Users.map((user, index) => {
+              const { id, image, job, name, text } = user;
+              return (
+                <div key={index}>
+                  <img className={`${slide} user-img`} src={image} alt="" />
+                  <p className={slide}>{text}</p>
+                  <h2 className={slide}>{name.toUpperCase()}</h2>
+                  <h4 className={slide}>{job}</h4>
+                </div>
+              );
+            })}
+          </Slider>
         </div>
       </div>
     </Layout>

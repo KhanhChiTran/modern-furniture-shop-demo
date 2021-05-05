@@ -3,22 +3,15 @@ import Layout from "../../components/layout/Layout";
 import { CartContext } from "../../contexts/CartContext";
 
 import Rating from "../../components/rating/Rating";
-import { Link } from "react-router-dom";
+
 import { AiOutlineHeart } from "react-icons/ai";
 
 import "./product.scss";
-import WishList from "../wishlist/WishList";
 
+import { productTypes } from "../../reducer/productTypes";
 export default function ProductDetail({ location }) {
   const { img, name, star, price, description, id } = location.state;
-  const {
-    handleAddToCart,
-    handleAddToWishlist,
-    cartItems,
-    wishlist,
-
-  } = useContext(CartContext);
-  // console.log(handleAddToCart);
+  const [{ cartItems, wishlistItems }, dispatch] = useContext(CartContext);
 
   return (
     <Layout>
@@ -34,7 +27,10 @@ export default function ProductDetail({ location }) {
           <div className="item-cart">
             <button
               onClick={() =>
-                handleAddToCart({ img, name, star, price, description, id })
+                dispatch({
+                  type: productTypes.ADD_TO_CART,
+                  payload: { img, name, star, price, description, id },
+                })
               }
               className="item-btn cart-btn"
               type="submit"
@@ -47,7 +43,10 @@ export default function ProductDetail({ location }) {
             </button>
             <button
               onClick={() =>
-                handleAddToWishlist({ img, name, star, price, description, id })
+                dispatch({
+                  type: productTypes.TOGGLE_WISHLIST,
+                  payload: { img, name, star, price, description, id },
+                })
               }
               className="item-btn wishlist-btn"
               type="submit"
@@ -55,7 +54,7 @@ export default function ProductDetail({ location }) {
               ADD TO WISHLIST{" "}
               <span className="icon">
                 {" "}
-                {wishlist.find((item) => item.id === id) ? (
+                {wishlistItems.find((item) => item.id === id) ? (
                   <AiOutlineHeart style={{ fill: "red" }} />
                 ) : (
                   <AiOutlineHeart />
