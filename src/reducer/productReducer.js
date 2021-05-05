@@ -2,7 +2,7 @@ import {
   handleAddToCart,
   handleMinusFromCart,
   handleRemoveFromCart,
-  handleAddToWishlist,
+  toggleWishlist,
 } from "./productHelpers";
 import { productTypes } from "./productTypes";
 
@@ -35,13 +35,15 @@ export const productReducer = (state, action) => {
         cartItems: handleRemoveFromCart({ ...action.payload, cartItems }),
       };
     case productTypes.TOGGLE_WISHLIST:
+      const { value, newWishlistItems } = toggleWishlist({
+        ...action.payload,
+        wishlistItems,
+      });
+
       return {
         ...state,
-        totalWishlist: totalWishlist + 1,
-        wishlistItems: handleAddToWishlist({
-          ...action.payload,
-          wishlistItems,
-        }),
+        totalWishlist: totalWishlist + value,
+        wishlistItems: newWishlistItems,
       };
 
     default:

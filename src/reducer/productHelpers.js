@@ -65,7 +65,7 @@ const handleRemoveFromCart = ({
   let newCartItems = cartItems.filter((item) => item.id !== id);
   return newCartItems;
 };
-function handleAddToWishlist({
+function toggleWishlist({
   img,
   name,
   star,
@@ -74,22 +74,25 @@ function handleAddToWishlist({
   id,
   wishlistItems,
 }) {
-  let newWishlist;
+  let value;
+  let newWishlistItems;
   let exitedItem = wishlistItems.find((item) => item.id === id);
   if (!exitedItem) {
-    newWishlist = [
+    value = 1;
+    newWishlistItems = [
       ...wishlistItems,
       { img, name, star, price, description, id },
     ];
   } else {
-    newWishlist = wishlistItems.filter((item) => item.id !== id);
+    value = -1;
+    newWishlistItems = wishlistItems.filter((item) => item.id !== id);
   }
-  return newWishlist;
+  return { value, newWishlistItems };
 }
 
 export {
   handleAddToCart,
   handleMinusFromCart,
-  handleAddToWishlist,
+  toggleWishlist,
   handleRemoveFromCart,
 };
