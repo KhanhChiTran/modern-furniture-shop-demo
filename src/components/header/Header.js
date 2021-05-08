@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
-import { Link, NavLink } from "react-router-dom";
-import { IoCartOutline } from "react-icons/io5";
-
 import { FiHeart } from "react-icons/fi";
+import { IoCartOutline } from "react-icons/io5";
+import { Link, NavLink } from "react-router-dom";
+import { CartContext } from "../../contexts/CartContext";
 import "./header.scss";
+
 export default function Header() {
   const [{ totalItems, totalWishlist }] = useContext(CartContext);
 

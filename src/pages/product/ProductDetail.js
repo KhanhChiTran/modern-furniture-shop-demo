@@ -1,14 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
-import Layout from "../../components/layout/Layout";
-import { CartContext } from "../../contexts/CartContext";
-
-import Rating from "../../components/rating/Rating";
-
+import React, { useContext } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
-
+import Layout from "../../components/Layout/Layout";
+import Rating from "../../components/Rating/Rating";
+import { CartContext } from "../../contexts/CartContext";
+import { productTypes } from "../../reducer/productTypes";
 import "./product.scss";
 
-import { productTypes } from "../../reducer/productTypes";
 export default function ProductDetail({ location }) {
   const { img, name, star, price, description, id } = location.state;
   const [{ cartItems, wishlistItems }, dispatch] = useContext(CartContext);

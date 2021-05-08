@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer.scss";
+
 export default function Footer() {
   return (
     <div className="footer">
@@ -9,13 +10,13 @@ export default function Footer() {
           <a href="./">
             <p>Help & Contact Us</p>
           </a>
-          <a href="">
+          <a href="./">
             <p>Returns & Refunds</p>
           </a>
-          <a href="">
+          <a href="./">
             <p>Online Stores</p>
           </a>
-          <a href="">
+          <a href="./">
             <p>Terms & Conditions</p>
           </a>
         </div>
@@ -24,13 +25,13 @@ export default function Footer() {
           <a href="./">
             <p>What We Do</p>
           </a>
-          <a href="">
+          <a href="./">
             <p>Available Services</p>
           </a>
-          <a href="">
+          <a href="./">
             <p>Latest Post</p>
           </a>
-          <a href="">
+          <a href="./">
             <p>FAQs</p>
           </a>
         </div>
@@ -39,13 +40,13 @@ export default function Footer() {
           <a href="./">
             <p>Twitter</p>
           </a>
-          <a href="">
+          <a href="./">
             <p>Instagram</p>
           </a>
-          <a href="">
+          <a href="./">
             <p>Tumblr</p>
           </a>
-          <a href="">
+          <a href="./">
             <p>Pinterest</p>
           </a>
         </div>
@@ -54,13 +55,13 @@ export default function Footer() {
           <a href="./">
             <p>My Account</p>
           </a>
-          <a href="">
+          <a href="./">
             <p>Checkout</p>
           </a>
-          <a href="">
+          <a href="./">
             <p>Order Tracking</p>
           </a>
-          <a href="">
+          <a href="./">
             <p>Help & Support</p>
           </a>
         </div>

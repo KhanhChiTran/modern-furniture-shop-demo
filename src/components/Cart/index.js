@@ -1,10 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
+import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
+import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
-import { MdDelete } from "react-icons/md";
-import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
-import "./cart.scss";
 import { productTypes } from "../../reducer/productTypes";
+import "./cart.scss";
 
 export default function Cart() {
   const [

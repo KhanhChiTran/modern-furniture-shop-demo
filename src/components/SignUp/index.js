@@ -1,7 +1,4 @@
 import React, { useRef, useState } from "react";
-
-import firebase from "../../firebase/firebaseAdmin";
-
 import { store } from "../../redux/store";
 
 const Registration = () => {

@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
-import Layout from "../../components/layout/Layout";
-
-import Rating from "../../components/rating/Rating";
-import slugify from "slugify";
-
-import "./store.scss";
+import React from "react";
 import { TiArrowBack } from "react-icons/ti";
-
 import { Link } from "react-router-dom";
-
+import slugify from "slugify";
 import Product from "../../assets/data/products";
+import Layout from "../../components/Layout/Layout";
+import Rating from "../../components/Rating/Rating";
+import "./store.scss";
 
 export default function Store() {
   return (

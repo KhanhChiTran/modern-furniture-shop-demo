@@ -1,57 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { CgArrowLongLeft, CgArrowLongRight } from "react-icons/cg";
-
-import Layout from "../../components/layout/Layout";
-
+import Slider from "react-slick";
+import Users from "../../assets/data/data";
 // import BambooPot from "../../assets/images/ba";
 import BambooPot from "../../assets/images/bamboo_pot.jpeg";
 import Basket from "../../assets/images/basket1.jpeg";
 import Table1 from "../../assets/images/table1.jpeg";
-
-import Users from "../../assets/data/data";
-
+import Layout from "../../components/Layout/Layout";
 import "./home.scss";
-import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const settings = {
   dots: true,
   infinite: true,
-  speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  autoplay: true,
+  // speed: 2000,
+  autoplaySpeed: 3000,
+  cssEase: "linear",
+  nextArrow: <SampleNextArrow />,
+  prevArrow: <SampleNextArrow />,
 };
-export default function Home() {
-  const [index, setIndex] = useState(0);
-  const [slide, setSlide] = useState("");
-  const { id, image, job, name, text } = Users[index];
-  const checkIndex = (num) => {
-    if (num > Users.length - 1) {
-      return 0;
-    }
-    if (num < 0) {
-      return Users.length - 1;
-    }
-    return num;
-  };
-  const toPrev = () => {
-    setIndex((index) => {
-      let newIndex = index - 1;
-      return checkIndex(newIndex);
-    });
-  };
-  const toNext = () => {
-    setIndex((index) => {
-      let newIndex = index + 1;
-      return checkIndex(newIndex);
-    });
-  };
-  useEffect(() => {
-    setSlide("slide");
-    setTimeout(() => {
-      setSlide("");
-    }, 700);
-  }, [index]);
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "#666" }}
+      onClick={onClick}
+    />
+  );
+}
 
+export default function Home() {
   return (
     <Layout>
       <div className="home-wrap">
@@ -68,33 +51,25 @@ export default function Home() {
             with staying at home.
           </article>
         </div>
-        <div className="reviews">
-          <button onClick={toPrev} className="arrow-left">
-            {" "}
-            <CgArrowLongLeft className="arrow-left-icon" />
-          </button>
-          <button onClick={toNext} className="arrow-right">
-            {" "}
-            <CgArrowLongRight className="arrow-right-icon" />
-          </button>
-          <img className={`${slide} user-img`} src={image} alt="" />
-          <p className={slide}>{text}</p>
-          <h2 className={slide}>{name.toUpperCase()}</h2>
-          <h4 className={slide}>{job}</h4>
-          <Slider {...settings}>
-            {Users.map((user, index) => {
-              const { id, image, job, name, text } = user;
-              return (
-                <div key={index}>
-                  <img className={`${slide} user-img`} src={image} alt="" />
-                  <p className={slide}>{text}</p>
-                  <h2 className={slide}>{name.toUpperCase()}</h2>
-                  <h4 className={slide}>{job}</h4>
+
+        <Slider {...settings}>
+          {Users.map((user, index) => {
+            const { id, image, job, name, text } = user;
+            return (
+              <div className="carousel-item" key={index}>
+                <div className="feedback">
+                  <p>{text}</p>
+                  <h2>{name.toUpperCase()}</h2>
+                  <h4>{job}</h4>
                 </div>
-              );
-            })}
-          </Slider>
-        </div>
+                <div
+                  className="picture"
+                  style={{ backgroundImage: `url(${image})` }}
+                ></div>
+              </div>
+            );
+          })}
+        </Slider>
       </div>
     </Layout>
   );

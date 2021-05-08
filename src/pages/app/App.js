@@ -1,18 +1,15 @@
 // import { Router } from "react-router";
-import "./App.scss";
 import { Route, Switch } from "react-router-dom";
-
-import Login from "../login/Login";
-import Home from "../home/Home";
-import Store from "../shop/Store";
-
-import Contact from "../contact/Contact";
-import Blog from "../blog/Blog";
-import ProductDetail from "../product/ProductDetail";
-import Cart from "../cart/Cart";
-import WishList from "../wishlist/WishList";
-
 import CartContextLayout from "../../contexts/CartContext";
+import Blog from "../blog/Blog";
+import Cart from "../cart/Cart";
+import Contact from "../contact/Contact";
+import Home from "../home/Home";
+import Login from "../login/Login";
+import ProductDetail from "../product/ProductDetail";
+import Store from "../shop/Store";
+import WishList from "../wishlist/WishList";
+import "./App.scss";
 
 function App() {
   return (
