@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/Layout/";
 import { CartContext } from "../../contexts/CartContext";
 import Rating from "../../components/Rating/Rating";
 export default function WishList() {

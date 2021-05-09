@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/Layout/";
 import "./blog.scss";
 import Carousel from "../../components/ProductCarousel/Carousel";
 import ImgCard from "../../components/Card/Card";
