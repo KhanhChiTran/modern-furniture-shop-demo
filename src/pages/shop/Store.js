@@ -3,7 +3,7 @@ import { TiArrowBack } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import slugify from "slugify";
 import Product from "../../assets/data/products";
-import Layout from "../../components/Layout/";
+import Layout from "../../components/Layout";
 import Rating from "../../components/Rating/Rating";
 import "./store.scss";
 

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
-import Layout from "../../components/Layout/";
+import Layout from "../../components/Layout";
 import Rating from "../../components/Rating/Rating";
 import { CartContext } from "../../contexts/CartContext";
 import { productTypes } from "../../reducer/productTypes";

@@ -6,7 +6,7 @@ import Users from "../../assets/data/data";
 import BambooPot from "../../assets/images/bamboo_pot.jpeg";
 import Basket from "../../assets/images/basket1.jpeg";
 import Table1 from "../../assets/images/table1.jpeg";
-import Layout from "../../components/Layout/";
+import Layout from "../../components/Layout";
 import "./home.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
