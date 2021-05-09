@@ -41,6 +41,7 @@ const tutorialSteps = [
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    margin: "0 auto",
     maxWidth: 900,
     flexGrow: 1,
   },
