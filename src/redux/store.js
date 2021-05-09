@@ -1,4 +1,5 @@
-import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+import userReducer from "./userSlice";
 
 function todos(state = [], action) {
   switch (action.type) {
@@ -9,4 +10,10 @@ function todos(state = [], action) {
   }
 }
 
-export const store = createStore(todos, ["Use Redux"]);
+const store = configureStore({
+  reducer: {
+    user: userReducer,
+  },
+});
+
+export default store;

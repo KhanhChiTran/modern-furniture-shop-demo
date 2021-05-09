@@ -1,41 +1,30 @@
 import React, { useRef, useState } from "react";
-import { store } from "../../redux/store";
+import { useSelector, useDispatch } from "react-redux";
+
+import { onStartSignUp } from "../../redux/userSlice";
 
 const Registration = () => {
   const [err, setErr] = useState(null);
   const [todos, setTodos] = useState([]);
+
+  const dispatch = useDispatch();
+
   const emailRef = useRef();
   const passRef = useRef();
-  const onStartSignUp = (e) => {
+  const startSignUp = (e) => {
     e.preventDefault();
-    store.dispatch({
-      type: "ADD_TODO",
-      text: " hello this a text",
-    });
-    // firebase
-    //   .auth()
-    //   .createUserWithEmailAndPassword(
-    //     emailRef.current.value,
-    //     passRef.current.value
-    //   )
-    //   .then((user) => console.log(user))
-    //   .catch((err) => {
-    //     if (err.code === "auth/weak-password") {
-    //       setErr("Ur password to short");
-    //     }
-    //     console.log(err);
-    //   });
+    dispatch(
+      onStartSignUp({
+        email: emailRef.current.value,
+        password: passRef.current.value,
+      })
+    );
   };
-  store.subscribe(() => {
-    const x = store.getState();
-    setTodos(x);
-  });
-  console.log(store);
 
   return (
     <div>
       <h1>This is signup</h1>
-      <form onSubmit={onStartSignUp}>
+      <form onSubmit={startSignUp}>
         <input ref={emailRef} type="email" placeholder="Enter ur email" />
         <input ref={passRef} type="password" placeholder="ur password" />
         {err && err}
