@@ -1,15 +1,15 @@
 // import { Router } from "react-router";
-import { Route, Switch } from "react-router-dom";
-import CartContextLayout from "../../contexts/CartContext";
-import Blog from "../blog";
-import Cart from "../cart";
-import Contact from "../contact";
-import Home from "../home";
-import Login from "../login";
-import ProductDetail from "../product";
-import Store from "../shop";
-import WishList from "../wishlist";
-import "./App.scss";
+import { Route, Switch } from "react-router-dom"
+import CartContextLayout from "../../contexts/CartContext"
+import Blog from "../Blog"
+import Cart from "../Cart"
+import Contact from "../Contact"
+import Home from "../Home"
+import Login from "../Login"
+import ProductDetail from "../Product"
+import Store from "../Shop"
+import WishList from "../Wishlist"
+import "./App.scss"
 
 function App() {
   return (
@@ -40,7 +40,7 @@ function App() {
         </Route>
       </Switch>
     </CartContextLayout>
-  );
+  )
 }
 
-export default App;
+export default App
