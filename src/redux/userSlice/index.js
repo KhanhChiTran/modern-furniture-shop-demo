@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import firebase from "../../firebase/firebaseAdmin";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import firebase from "../../firebase/firebaseAdmin"
 
 // firebase
 //   .auth()
@@ -18,50 +18,57 @@ import firebase from "../../firebase/firebaseAdmin";
 export const onStartSignUp = createAsyncThunk(
   "user/signup",
   async ({ email, password }) => {
+    /**
+     * Create a promise to handle signup
+     */
     return new Promise((resovle, reject) => {
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
-        .then((user) => resovle({ email: user.email, uid: user.uid }))
-        .catch((err) => reject(err));
-    });
-    // console.log(
-    //   firebase.auth().createUserWithEmailAndPassword(email, password)
-    // );
-    // const user = await firebase
+        .then(user => resovle({ email: user.email, uid: user.uid }))
+        .catch(err => reject(err))
+    })
+    /**
+     * @checking response
+     */
+    // const response = await firebase
     //   .auth()
     //   .createUserWithEmailAndPassword(email, password)
-    //   .then((user) => console.log(user))
-    //   .catch((err) => console.log(err));
-
-    // console.log(user);
-    // return user.todo;
+    // if (response.user) {
+    //   return { email: response.user.email, uid: response.user.uid }
+    // }
+    // return response.error
   }
-);
+)
 const initialState = {
   user: null,
   status: null,
-};
+}
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(onStartSignUp.pending, (state, action) => {
-        state.status = "loading";
+        state.status = "loading"
       })
-      .addCase(onStartSignUp.fulfilled, (state, { email, uid }) => {
-        state.user = email;
-        state.status = "done";
-      })
+      .addCase(
+        onStartSignUp.fulfilled,
+        (state, { payload: { email, uid } }) => {
+          console.log(email)
+          state.user = email
+          state.status = "done"
+        }
+      )
       .addCase(onStartSignUp.rejected, (state, { error }) => {
-        state.user = error.code;
-        state.status = "fail";
-      });
+        console.log(error)
+        state.user = error.code
+        state.status = "fail"
+      })
   },
-});
+})
 
 // export  { onStartSignUp } = userSlice.actions;
-export default userSlice.reducer;
+export default userSlice.reducer

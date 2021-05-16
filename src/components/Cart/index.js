@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
-import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
-import { MdDelete } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { CartContext } from "../../contexts/CartContext";
-import { productTypes } from "../../reducer/productTypes";
-import "./cart.scss";
+import React, { useContext } from "react"
+import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai"
+import { MdDelete } from "react-icons/md"
+import { Link } from "react-router-dom"
+import { CartContext } from "../../contexts/CartContext"
+import { productTypes } from "../../redux/reducer/productTypes"
+import "./cart.scss"
 
 export default function Cart() {
-  const [
-    { cartItems, totalItems, wishlistItems, totalWishlist },
-    dispatch,
-  ] = useContext(CartContext);
+  const [{ cartItems, totalItems, wishlistItems, totalWishlist }, dispatch] =
+    useContext(CartContext)
   return (
     <div>
       {totalItems === 0 ? (
@@ -23,16 +21,8 @@ export default function Cart() {
       ) : (
         <div className="cart-wrap">
           <div className="cart-item-wrap">
-            {cartItems.map((item) => {
-              const {
-                img,
-                name,
-                star,
-                price,
-                description,
-                id,
-                quantity,
-              } = item;
+            {cartItems.map(item => {
+              const { img, name, star, price, description, id, quantity } = item
               return (
                 <div key={item.id} className="cart-item">
                   <img className="cart-item-img" src={img} alt="image" />
@@ -98,7 +88,7 @@ export default function Cart() {
                     </span>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
           <div className="total">
@@ -122,5 +112,5 @@ export default function Cart() {
         </div>
       )}
     </div>
-  );
+  )
 }

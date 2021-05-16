@@ -1,25 +1,27 @@
-import React, { useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useRef, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
 
-import { onStartSignUp } from "../../redux/userSlice";
+import { onStartSignUp } from "../../redux/userSlice"
 
 const Registration = () => {
-  const [err, setErr] = useState(null);
-  const [todos, setTodos] = useState([]);
+  const [err, setErr] = useState(null)
+  const [todos, setTodos] = useState([])
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  const state = useSelector(state => state.user)
 
-  const emailRef = useRef();
-  const passRef = useRef();
-  const startSignUp = (e) => {
-    e.preventDefault();
+  const emailRef = useRef()
+  const passRef = useRef()
+  const startSignUp = e => {
+    e.preventDefault()
     dispatch(
       onStartSignUp({
         email: emailRef.current.value,
         password: passRef.current.value,
       })
-    );
-  };
+    )
+  }
+  console.log(state)
 
   return (
     <div>
@@ -35,7 +37,7 @@ const Registration = () => {
         ))}
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Registration;
+export default Registration

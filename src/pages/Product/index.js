@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
-import Layout from "../../components/Layout";
-import Rating from "../../components/Rating/Rating";
-import { CartContext } from "../../contexts/CartContext";
-import { productTypes } from "../../reducer/productTypes";
-import "./product.scss";
+import React, { useContext } from "react"
+import { AiOutlineHeart } from "react-icons/ai"
+import Layout from "../../components/Layout"
+import Rating from "../../components/Rating/Rating"
+import { CartContext } from "../../contexts/CartContext"
+import { productTypes } from "../../redux/reducer/productTypes"
+import "./product.scss"
 
 export default function ProductDetail({ location }) {
-  const { img, name, star, price, description, id } = location.state;
-  const [{ cartItems, wishlistItems }, dispatch] = useContext(CartContext);
+  const { img, name, star, price, description, id } = location.state
+  const [{ cartItems, wishlistItems }, dispatch] = useContext(CartContext)
 
   return (
     <Layout>
@@ -32,7 +32,7 @@ export default function ProductDetail({ location }) {
               className="item-btn cart-btn"
               type="submit"
             >
-              {cartItems.find((item) => item.id === id) ? (
+              {cartItems.find(item => item.id === id) ? (
                 <span> &#10004; ADDED</span>
               ) : (
                 <span>ADD TO CART</span>
@@ -51,7 +51,7 @@ export default function ProductDetail({ location }) {
               ADD TO WISHLIST{" "}
               <span className="icon">
                 {" "}
-                {wishlistItems.find((item) => item.id === id) ? (
+                {wishlistItems.find(item => item.id === id) ? (
                   <AiOutlineHeart style={{ fill: "red" }} />
                 ) : (
                   <AiOutlineHeart />
@@ -63,5 +63,5 @@ export default function ProductDetail({ location }) {
       </div>
       <div className="related-item"></div>
     </Layout>
-  );
+  )
 }
