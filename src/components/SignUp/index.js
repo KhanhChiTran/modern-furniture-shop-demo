@@ -1,7 +1,36 @@
-import React, { useRef, useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import clsx from "clsx"
+import { makeStyles } from "@material-ui/core/styles"
+import Button from "@material-ui/core/Button"
 
+import FormControl from "@material-ui/core/FormControl"
+import IconButton from "@material-ui/core/IconButton"
+import InputAdornment from "@material-ui/core/InputAdornment"
+import InputLabel from "@material-ui/core/InputLabel"
+import OutlinedInput from "@material-ui/core/OutlinedInput"
+import Visibility from "@material-ui/icons/Visibility"
+import VisibilityOff from "@material-ui/icons/VisibilityOff"
+import React, { useRef, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { onStartSignUp } from "../../redux/userSlice"
+import Grid from "@material-ui/core/Grid"
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
+  margin: {
+    // display: "flex",
+    // justifyContent: "center",
+    margin: theme.spacing(1),
+  },
+  withoutLabel: {
+    marginTop: theme.spacing(3),
+  },
+  textField: {
+    width: "25ch",
+  },
+}))
 
 const Registration = () => {
   const [err, setErr] = useState(null)
@@ -12,6 +41,24 @@ const Registration = () => {
 
   const emailRef = useRef()
   const passRef = useRef()
+  const classes = useStyles()
+  const [values, setValues] = React.useState({
+    email: "",
+    password: "",
+
+    showPassword: false,
+  })
+  const handleChange = prop => event => {
+    setValues({ ...values, [prop]: event.target.value })
+  }
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword })
+  }
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault()
+  }
   const startSignUp = e => {
     e.preventDefault()
     dispatch(
@@ -24,19 +71,81 @@ const Registration = () => {
   console.log(state)
 
   return (
-    <div>
+    <Grid container className={classes.root} spacing={2}>
       <h1>This is signup</h1>
-      <form onSubmit={startSignUp}>
-        <input ref={emailRef} type="email" placeholder="Enter ur email" />
-        <input ref={passRef} type="password" placeholder="ur password" />
+      {/* <form onSubmit={startSignUp}>
+        <input
+          ref={emailRef}
+          type="email"
+          placeholder="Enter ur email"
+          required
+        />
+        <input
+          ref={passRef}
+          type="password"
+          placeholder="ur password"
+          required
+        />
         {err && err}
 
         <input type="submit" value="Registration" />
         {todos.map((item, i) => (
           <p key={i}> {item} </p>
         ))}
-      </form>
-    </div>
+      </form> */}
+      <Grid item xs={12} className={classes.root}>
+        <FormControl
+          className={clsx(classes.margin, classes.textField)}
+          variant="outlined"
+        >
+          <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-email"
+            value={values.email}
+            onChange={handleChange("email")}
+            labelWidth={70}
+            required
+          />
+        </FormControl>
+      </Grid>
+      <Grid item xs={12} className={classes.root}>
+        <FormControl
+          className={clsx(classes.margin, classes.textField)}
+          variant="outlined"
+        >
+          <InputLabel htmlFor="outlined-adornment-password">
+            Password
+          </InputLabel>
+          <OutlinedInput
+            required
+            id="outlined-adornment-password"
+            type={values.showPassword ? "text" : "password"}
+            value={values.password}
+            onChange={handleChange("password")}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+            labelWidth={70}
+          />
+        </FormControl>
+      </Grid>
+      <Button
+        variant="contained"
+        color="primary"
+        style={{ margin: "10px 0 30px 0", width: 250, padding: 10 }}
+      >
+        Primary
+      </Button>
+    </Grid>
   )
 }
 
