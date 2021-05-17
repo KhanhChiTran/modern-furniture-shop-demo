@@ -72,7 +72,7 @@ const Registration = () => {
 
   return (
     <Grid container className={classes.root} spacing={2}>
-      <h1>This is signup</h1>
+      <h1>Signup</h1>
       {/* <form onSubmit={startSignUp}>
         <input
           ref={emailRef}
@@ -97,6 +97,7 @@ const Registration = () => {
         <FormControl
           className={clsx(classes.margin, classes.textField)}
           variant="outlined"
+          required
         >
           <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
           <OutlinedInput
@@ -104,7 +105,6 @@ const Registration = () => {
             value={values.email}
             onChange={handleChange("email")}
             labelWidth={70}
-            required
           />
         </FormControl>
       </Grid>
@@ -112,12 +112,12 @@ const Registration = () => {
         <FormControl
           className={clsx(classes.margin, classes.textField)}
           variant="outlined"
+          required
         >
           <InputLabel htmlFor="outlined-adornment-password">
             Password
           </InputLabel>
           <OutlinedInput
-            required
             id="outlined-adornment-password"
             type={values.showPassword ? "text" : "password"}
             value={values.password}
@@ -143,7 +143,7 @@ const Registration = () => {
         color="primary"
         style={{ margin: "10px 0 30px 0", width: 250, padding: 10 }}
       >
-        Primary
+        Submit
       </Button>
     </Grid>
   )
