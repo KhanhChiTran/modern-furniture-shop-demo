@@ -13,6 +13,8 @@ import "./home.scss"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
+// Test package
+
 const useStyles = makeStyles(theme => ({
   root: {
     // display: "flex",

@@ -9,6 +9,7 @@ import Login from "../Login"
 import ProductDetail from "../Product"
 import Store from "../Shop"
 import WishList from "../Wishlist"
+import PageNotFound from "../PageNotFound"
 import "./App.scss"
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route path="/contact">
           <Contact />
+        </Route>
+        <Route>
+          <PageNotFound />
         </Route>
       </Switch>
     </CartContextLayout>
