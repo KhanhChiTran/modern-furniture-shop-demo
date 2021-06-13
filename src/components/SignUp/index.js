@@ -147,9 +147,14 @@ const Registration = () => {
         </FormControl>
       </Grid>
       <Button
+        style={{
+          margin: "10px 0 150px 0",
+          width: 250,
+          padding: 10,
+          background: "orange"
+        }}
         variant="contained"
         color="primary"
-        style={{ margin: "10px 0 150px 0", width: 250, padding: 10 }}
       >
         Submit
       </Button>
