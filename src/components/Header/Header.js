@@ -41,7 +41,7 @@ export default function Header() {
             Blog
           </NavLink>
           <NavLink className="link-item" to="/login" activeClassName="active">
-            Log In
+            Login
           </NavLink>
           <NavLink className="link-item" to="/contact" activeClassName="active">
             Contact

@@ -1,78 +1,81 @@
-import clsx from "clsx"
-import { makeStyles } from "@material-ui/core/styles"
-import Button from "@material-ui/core/Button"
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
-import FormControl from "@material-ui/core/FormControl"
-import IconButton from "@material-ui/core/IconButton"
-import InputAdornment from "@material-ui/core/InputAdornment"
-import InputLabel from "@material-ui/core/InputLabel"
-import OutlinedInput from "@material-ui/core/OutlinedInput"
-import Visibility from "@material-ui/icons/Visibility"
-import VisibilityOff from "@material-ui/icons/VisibilityOff"
-import React, { useRef, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { onStartSignUp } from "../../redux/userSlice"
-import Grid from "@material-ui/core/Grid"
-const useStyles = makeStyles(theme => ({
+import FormControl from "@material-ui/core/FormControl";
+import IconButton from "@material-ui/core/IconButton";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import InputLabel from "@material-ui/core/InputLabel";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { onStartSignUp } from "../../redux/userSlice";
+import Grid from "@material-ui/core/Grid";
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   margin: {
     // display: "flex",
     // justifyContent: "center",
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   withoutLabel: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(3)
   },
   textField: {
-    width: "25ch",
-  },
-}))
+    width: "25ch"
+  }
+}));
 
 const Registration = () => {
-  const [err, setErr] = useState(null)
-  const [todos, setTodos] = useState([])
+  const [err, setErr] = useState(null);
+  const [todos, setTodos] = useState([]);
 
-  const dispatch = useDispatch()
-  const state = useSelector(state => state.user)
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.user);
 
-  const emailRef = useRef()
-  const passRef = useRef()
-  const classes = useStyles()
+  const emailRef = useRef();
+  const passRef = useRef();
+  const classes = useStyles();
   const [values, setValues] = React.useState({
     email: "",
     password: "",
 
-    showPassword: false,
-  })
-  const handleChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value })
-  }
+    showPassword: false
+  });
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
 
   const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword })
-  }
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
 
-  const handleMouseDownPassword = event => {
-    event.preventDefault()
-  }
-  const startSignUp = e => {
-    e.preventDefault()
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+  const startSignUp = (e) => {
+    e.preventDefault();
     dispatch(
       onStartSignUp({
         email: emailRef.current.value,
-        password: passRef.current.value,
+        password: passRef.current.value
       })
-    )
-  }
-  console.log(state)
+    );
+  };
+  console.log(state);
 
   return (
     <Grid container className={classes.root} spacing={2}>
-      <h1>Signup</h1>
+      <h1>
+        Log in /<a href="/register">Register</a>
+      </h1>
+
       {/* <form onSubmit={startSignUp}>
         <input
           ref={emailRef}
@@ -94,6 +97,11 @@ const Registration = () => {
         ))}
       </form> */}
       <Grid item xs={12} className={classes.root}>
+        <Grid item xs={10} className={classes.root}>
+          <p>
+            Please enter your account details to log in to your user account.
+          </p>
+        </Grid>
         <FormControl
           className={clsx(classes.margin, classes.textField)}
           variant="outlined"
@@ -141,12 +149,12 @@ const Registration = () => {
       <Button
         variant="contained"
         color="primary"
-        style={{ margin: "10px 0 30px 0", width: 250, padding: 10 }}
+        style={{ margin: "10px 0 150px 0", width: 250, padding: 10 }}
       >
         Submit
       </Button>
     </Grid>
-  )
-}
+  );
+};
 
-export default Registration
+export default Registration;

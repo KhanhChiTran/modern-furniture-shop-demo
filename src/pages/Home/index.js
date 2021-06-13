@@ -1,26 +1,25 @@
-import React, { useEffect, useState } from "react"
-import { CgArrowLongLeft, CgArrowLongRight } from "react-icons/cg"
-import Slider from "react-slick"
-import Users from "../../assets/data/data"
+import React, { useEffect, useState } from "react";
+import Slider from "react-slick";
+import Users from "../../assets/data/data";
 // import BambooPot from "../../assets/images/ba";
-import BambooPot from "../../assets/images/bamboo_pot.jpeg"
-import Basket from "../../assets/images/basket1.jpeg"
-import Table1 from "../../assets/images/table1.jpeg"
-import Layout from "../../components/Layout"
-import { Grid } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core/styles"
-import "./home.scss"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+import BambooPot from "../../assets/images/bamboo_pot.jpeg";
+import Basket from "../../assets/images/basket1.jpeg";
+import Table1 from "../../assets/images/table1.jpeg";
+import Layout from "../../components/Layout";
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import "./home.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 // Test package
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     // display: "flex",
   },
-  bigImage: {},
-}))
+  bigImage: {}
+}));
 
 const settings = {
   dots: true,
@@ -32,22 +31,22 @@ const settings = {
   autoplaySpeed: 3000,
   cssEase: "linear",
   nextArrow: <SampleNextArrow />,
-  prevArrow: <SampleNextArrow />,
-}
+  prevArrow: <SampleNextArrow />
+};
 function SampleNextArrow(props) {
-  const { className, style, onClick } = props
+  const { className, style, onClick } = props;
   return (
     <div
       className={className}
       style={{ ...style, display: "block", background: "#666" }}
       onClick={onClick}
     />
-  )
+  );
 }
 
 export default function Home() {
-  const classes = useStyles()
-  console.log(classes)
+  const classes = useStyles();
+  console.log(classes);
   return (
     <Layout>
       <Grid container className={classes.root}>
@@ -77,7 +76,7 @@ export default function Home() {
 
         <Slider {...settings}>
           {Users.map((user, index) => {
-            const { id, image, job, name, text } = user
+            const { id, image, job, name, text } = user;
             return (
               <div className="carousel-item" key={index}>
                 <div className="feedback">
@@ -90,10 +89,10 @@ export default function Home() {
                   style={{ backgroundImage: `url(${image})` }}
                 ></div>
               </div>
-            )
+            );
           })}
         </Slider>
       </Grid>
     </Layout>
-  )
+  );
 }
