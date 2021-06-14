@@ -71,7 +71,12 @@ const Registration = () => {
   console.log(state);
 
   return (
-    <Grid container className={classes.root} spacing={2}>
+    <Grid
+      style={{ background: "#fcf9e8" }}
+      container
+      className={classes.root}
+      spacing={2}
+    >
       <h1>Login</h1>
 
       {/* <form onSubmit={startSignUp}>
