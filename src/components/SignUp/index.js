@@ -72,9 +72,7 @@ const Registration = () => {
 
   return (
     <Grid container className={classes.root} spacing={2}>
-      <h1>
-        Log in /<a href="/register">Register</a>
-      </h1>
+      <h1>Login</h1>
 
       {/* <form onSubmit={startSignUp}>
         <input
@@ -99,7 +97,8 @@ const Registration = () => {
       <Grid item xs={12} className={classes.root}>
         <Grid item xs={10} className={classes.root}>
           <p>
-            Please enter your account details to log in to your user account.
+            Please enter your account details to log in to your user account. Or
+            you can <a href="/register">Create account</a> here
           </p>
         </Grid>
         <FormControl

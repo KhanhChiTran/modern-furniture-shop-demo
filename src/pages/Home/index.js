@@ -65,14 +65,14 @@ export default function Home() {
             </article>
           </div>
         </Grid>
-        <div className="home-intro">
+        {/* <div className="home-intro">
           <h3>Home Decoration</h3>
           <article>
             Want to reinvent the look and feel of your home? Whatever style
             you’re going for, our edit is here to help you fall head over heels
             with staying at home.
           </article>
-        </div>
+        </div> */}
 
         <Slider {...settings}>
           {Users.map((user, index) => {

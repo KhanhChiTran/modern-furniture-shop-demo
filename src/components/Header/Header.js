@@ -41,8 +41,16 @@ export default function Header() {
             Blog
           </NavLink>
           <NavLink className="link-item" to="/login" activeClassName="active">
-            Login
+            Login/
+            <NavLink
+              className="link-item"
+              to="/register"
+              activeClassName="active"
+            >
+              Register
+            </NavLink>
           </NavLink>
+
           <NavLink className="link-item" to="/contact" activeClassName="active">
             Contact
           </NavLink>
